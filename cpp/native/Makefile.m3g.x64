@@ -1,0 +1,35 @@
+# Define compiler and compile options
+C_COMPILER = gcc
+CPP_COMPILER = g++
+#-DM3G_TARGET_ANDROID  -DDO_SOMETHING -DM3G_DEBUG -DM3G_NATIVE_LOADER -DM3G_TARGET_GENERIC -DUSE_GBM
+CFLAGS = -O3 -DM3G_GL_ES_1_1  -DM3G_TARGET_GENERIC -DM3G_MAX_GL_CONTEXTS=3 -DM3G_MAX_GL_SURFACES=3 -fPIC -I./m3g/inc -I./include -I./include/linux
+  
+# Define source and target files  
+SRCS1 = m3g/CSynchronization.cpp m3g/m3g_android_java_api.cpp m3g/src/m3g_android.cpp m3g/src/m3g_android_gl.cpp 
+SRCS2 = m3g/src/m3g_core.c 
+OBJS1 = $(SRCS1:%.cpp=%.o) 
+OBJS2 = $(SRCS2:%.c=%.o)
+  
+# Define the generated target file and library name  
+TARGET = libm3g.so  
+
+# Compile rules 
+%.o: %.c  
+	$(C_COMPILER) $(CFLAGS)   -c $< -o $@  
+%.o: %.cpp  
+	$(CPP_COMPILER) $(CFLAGS)  -c $< -o $@
+  
+# Default target  
+all: $(TARGET)  
+
+
+  
+# Link to generate dynamic link library  
+$(TARGET): $(OBJS1)  $(OBJS2)  
+	$(CPP_COMPILER) -shared -o $(TARGET) $(OBJS2)  $(OBJS1)   -lz -lGLESv1_CM -lEGL
+  
+
+  
+# Clean target files and libraries  
+clean:  
+	rm -f $(OBJS1) $(OBJS2)

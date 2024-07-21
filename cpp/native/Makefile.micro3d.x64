@@ -1,0 +1,28 @@
+# Define compiler and compilation options 
+C_COMPILER = gcc
+CPP_COMPILER = g++
+CFLAGS = -O3 -fPIC -I./micro3d/inc -I./include -I./include/linux 
+  
+# Define source and target files  
+SRCS1 = micro3d/src/utils.cpp
+OBJS1 = $(SRCS1:%.cpp=%.o) 
+
+  
+# Define generated target file and library name  
+TARGET = libmicro3d.so  
+  
+# Default target  
+all: $(TARGET)  
+  
+# Link to generate dynamic link library  
+$(TARGET): $(OBJS1)
+	$(CPP_COMPILER) -shared -o $(TARGET) $(OBJS1)   -lGLESv2 -lEGL
+  
+# Compile rules  
+%.o: %.cpp  
+	$(CPP_COMPILER) $(CFLAGS)  -c $< -o $@  
+  
+# Clean target files and libraries 
+clean:  
+	rm -f $(OBJS1)
+

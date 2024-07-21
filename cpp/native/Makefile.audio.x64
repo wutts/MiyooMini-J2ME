@@ -1,0 +1,27 @@
+# Define compiler and compilation options  
+C_COMPILER = gcc
+CPP_COMPILER = g++
+CFLAGS = -O3 -fPIC -I./audio -I./include -I./include/linux 
+  
+# Define source and target files 
+SRCS1 = audio/org_recompile_mobile_Audio.cpp
+OBJS1 = $(SRCS1:%.cpp=%.o) 
+
+  
+# Define generated target file and library name
+TARGET = libaudio.so  
+  
+# Default target 
+all: $(TARGET)  
+  
+# Link to generate dynamic link library
+$(TARGET): $(OBJS1)
+	$(CPP_COMPILER) -shared -o $(TARGET) $(OBJS1)   -lSDL2 -lSDL2_mixer
+  
+# Compile rules 
+%.o: %.cpp 
+	$(CPP_COMPILER) $(CFLAGS)  -c $< -o $@  
+  
+# Clean target files and libraries  
+clean:  
+	rm -f $(OBJS1)
