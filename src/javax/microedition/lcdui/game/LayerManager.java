@@ -26,7 +26,7 @@ import javax.microedition.lcdui.Graphics;
 import org.recompile.mobile.Mobile;
 import org.recompile.mobile.PlatformGraphics;
 
-//图层管理
+// Layer management
 public class LayerManager
 {
 
@@ -38,7 +38,7 @@ public class LayerManager
 	protected PlatformGraphics gc;
 	protected Shape clip;
 
-	//裁剪区坐标及宽度
+	// Clipping area coordinates and dimensions
 	protected int x;
 	protected int y;
 	protected int width;
@@ -100,10 +100,10 @@ public class LayerManager
 		int clipH = g.getClipHeight();
 
 		// translate the LayerManager co-ordinates to Screen co-ordinates
-		//平移坐标系，向右，向下
+		// Translate coordinate system, right and down
 		g.translate(xdest - x, ydest - y);
 		// set the clip to view window
-		//clipRect()方法是Graphics类中的一个方法，用于设置一个矩形的裁剪区域。这意味着在该矩形内的图形和文本将被绘制，而不在矩形内的部分则被裁剪掉
+		// clipRect() method is a method in the Graphics class used to set a rectangular clipping area. This means graphics and text within this rectangle will be drawn, while parts outside the rectangle will be clipped
 		g.clipRect(x, y, width, height);// save the original clip
 		
 		for (int i = nlayers; --i >= 0; ) {

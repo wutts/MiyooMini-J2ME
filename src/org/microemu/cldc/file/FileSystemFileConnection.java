@@ -62,7 +62,7 @@ public class FileSystemFileConnection implements FileConnection {
 
 	private static final char DIR_SEP = '/';
 	private static final String DIR_SEP_STR = "/";
-	//直接指定d:/为根路径
+	// Directly specify d:/ as root path
 	private static final String[] FC_ROOTS = {
 			"mnt/",
 			"roms/",

@@ -176,14 +176,14 @@ public class MobilePlatform
 
 	private void updateKeyState(int key, int val)
 	{
-		/* // 获取当前线程对象
+		/* // Get current thread object
 		Thread currentThread = Thread.currentThread();
 		
-		// 获取当前线程的ID
+		// Get current thread ID
 		long threadId = currentThread.getId();
 		
-		// 打印线程ID
-		System.out.println("更新keystate线程的ID是：" + threadId); */
+		// Print thread ID
+		System.out.println("The ID of the thread updating keystate is: " + threadId); */
 		
 		
 		int mask=0;

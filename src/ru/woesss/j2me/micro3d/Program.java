@@ -333,7 +333,7 @@ abstract class Program {
 		StringBuilder sb = new StringBuilder();
 
 		//noinspection CharsetObjectCanBeUsed
-		//从应用的 assets 文件夹中打开文件
+		// Open file from application's assets folder
 		//try (InputStream is = getAppContext().getAssets().open(fileName);
 		try (InputStream is =new FileInputStream(new File(fileName));
 			BufferedReader br = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")))) {

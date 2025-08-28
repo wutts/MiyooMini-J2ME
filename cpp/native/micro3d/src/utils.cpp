@@ -32,7 +32,7 @@ JNIEXPORT jlong JNICALL Java_com_mascotcapsule_micro3d_v3_Utils_getDisplay
 	g_display = eglGetDisplay(EGL_DEFAULT_DISPLAY);	
 	#endif
 
-	if(g_display == EGL_NO_DISPLAY)							//失败返回 EGL_NO_DISPLAY
+	if(g_display == EGL_NO_DISPLAY)							//Returns EGL_NO_DISPLAY on failure
 	{
 		printf("[native]  Init g_Display Failed\n");
 	}
@@ -57,7 +57,7 @@ JNIEXPORT void JNICALL Java_com_mascotcapsule_micro3d_v3_Utils_fillBuffer
     env->ReleaseIntArrayElements(indices, indexPtr, 0);
 }
 
-//Canvas类调用
+//Called by Canvas class
 JNIEXPORT void JNICALL Java_com_mascotcapsule_micro3d_v3_Utils_glReadPixels
         (JNIEnv *env, jclass ,
          jint x, jint y, jint width, jint height, jintArray bitmap_buffer,jint bwidth, jint bstride) {

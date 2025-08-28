@@ -151,14 +151,14 @@ public class Anbu
 			return globalFont;
 		}
 		try{
-			// 加载字体
+			// Load font
 			java.awt.Font tmpFont = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File("./font.ttf"));
 				
-			// 字体大小设置
-			globalFont = tmpFont.deriveFont(java.awt.Font.PLAIN,12f); // 12f 表示12号大小
+			// Font size setting
+			globalFont = tmpFont.deriveFont(java.awt.Font.PLAIN,12f); // 12f represents size 12
 		}
 		catch (Exception e) {
-            System.err.println("字体文件加载失败,使用默认字体: " + e.getMessage());
+            System.err.println("Font file loading failed, using default font: " + e.getMessage());
 			globalFont = new java.awt.Font("MiSans Normal", java.awt.Font.PLAIN,  12);
         }
 		return globalFont;
@@ -172,7 +172,7 @@ public class Anbu
 
 		if (args.length < 3)
 		{
-			System.out.println("参数数量不一致");
+			System.out.println("Parameter count mismatch");
 			System.exit(0);
 		}
 		
@@ -224,7 +224,7 @@ public class Anbu
 					}
 					
 					pretime=System.currentTimeMillis();
-					//System.out.println("cur time2：" + pretime);
+					//System.out.println("Current time2: " + pretime);
 					
 					
 					/*String output;
@@ -320,9 +320,9 @@ public class Anbu
 					new Thread(new Runnable() {  
 						@Override  
 						public void run() {  
-							// 线程执行的代码  
+							// Thread execution code  
 							try {  
-								Thread.sleep(2000); // 休眠2秒  
+								Thread.sleep(2000); // Sleep for 2 seconds  
 							} catch (InterruptedException e) {  
 								e.printStackTrace();  
 							}
@@ -342,7 +342,7 @@ public class Anbu
 		Mobile.getPlatform().setPainter(painter);
 		
 		
-		System.out.println("jar文件:"+args[0]);
+		System.out.println("JAR file: "+args[0]);
 
 		
 
@@ -412,15 +412,15 @@ public class Anbu
 				
 				proc=processBuilder.start();
 
-				//标准输出流，从接口获取用户的按键输入
+				// Standard output stream, get user key input from interface
 				keys = proc.getInputStream(); //  miyoo mini/x64-linux
 				//keys = proc.getErrorStream(); //gkdminiplus
 				
-				//输入流，把图像传给接口
+				// Input stream, send image to interface
 				frame = proc.getOutputStream();
 				
 				
-				//标准错误流
+				// Standard error stream
 				//InputStream errorStream = proc.getErrorStream();
 				/* InputStream errorStream = proc.getInputStream();
 				InputStreamReader eisr = new InputStreamReader(errorStream);
@@ -435,7 +435,7 @@ public class Anbu
 
 				keytimer = new Timer();
 				keytask = new SDLKeyTimerTask();
-				keytimer.schedule(keytask, 0, 5); //5ms刷新
+				keytimer.schedule(keytask, 0, 5); // 5ms refresh
 				
 			}
 			catch (Exception e)
@@ -482,23 +482,23 @@ public class Anbu
 
 							switch(din[0] >>> 4)
 							{
-								case 0: //按键模式
+								case 0: // Key mode
 									code = (din[1]<<24) | (din[2]<<16) | (din[3]<<8) | din[4];
 									
 									//System.out.println(" ("+code+") =============== Key");
 									
 									mobikey = getMobileKey(code); 
 									break;
-								case 1://触屏模式
+								case 1:// Touch screen mode
 									
 									x=((din[1]<<8)&0xFF00) | (din[2]&0x00FF);
 									y=((din[3]<<8)&0xFF00) | (din[4]&0x00FF);
 									
 									
-									if(din[0] % 2 == 0)//释放
+									if(din[0] % 2 == 0)// Release
 									{
 										
-										//System.out.println("鼠标释放x:"+x+" y:"+y);
+										//System.out.println("Mouse released x:"+x+" y:"+y);
 										Mobile.getPlatform().pointerReleased(x, y);
 										
 										press=false;
@@ -507,7 +507,7 @@ public class Anbu
 									{
 										if(press)
 											return;
-										//System.out.println("鼠标按下x:"+x+" y:"+y);
+										//System.out.println("Mouse pressed x:"+x+" y:"+y);
 										Mobile.getPlatform().pointerPressed(x, y);
 										
 										press=true;
@@ -534,7 +534,7 @@ public class Anbu
 								Mobile.getPlatform().keyReleased(mobikey);
 								pressedKeys[mobikeyN] = false;
 								
-								//System.out.println("按键释放");
+								//System.out.println("Key released");
 							}
 							else
 							{
@@ -544,13 +544,13 @@ public class Anbu
 									//System.out.println("keyPressed:  " + Integer.toString(mobikey));
 									Mobile.getPlatform().keyPressed(mobikey);
 									
-									//System.out.println("按键按下");
+									//System.out.println("Key pressed");
 								}
 								else
 								{
 									//System.out.println("keyRepeated:  " + Integer.toString(mobikey));
 									Mobile.getPlatform().keyRepeated(mobikey);
-									//System.out.println("按键重复");
+									//System.out.println("Key repeated");
 								}
 								pressedKeys[mobikeyN] = true;
 							}
@@ -565,7 +565,7 @@ public class Anbu
 	
 	private int getMobileKey(int keycode)
 	{
-		//System.out.println("按键码:"+keycode);
+		//System.out.println("Key code: "+keycode);
 		if(useFlag==1)
 		{
 			switch(keycode)
@@ -629,7 +629,7 @@ public class Anbu
 		
 		
 		
-		//keycode是SDL对应的键盘码
+		// keycode is the SDL corresponding keyboard code
 		switch(keycode)
 		{
 			case 0x30: return Mobile.KEY_NUM0;
@@ -662,7 +662,7 @@ public class Anbu
 					soundLevel-=20;
 				else
 					soundLevel=0;
-				//System.out.println("音量:"+soundLevel);
+				//System.out.println("Volume: "+soundLevel);
 				Audio.setVol(soundLevel);
 				config.settings.put("sound", String.valueOf(soundLevel));
 				config.saveConfig();
@@ -675,10 +675,10 @@ public class Anbu
 				Audio.setVol(soundLevel);
 				config.settings.put("sound", String.valueOf(soundLevel));
 				config.saveConfig();
-				//System.out.println("音量:"+soundLevel);
+				//System.out.println("Volume: "+soundLevel);
 				break;
 
-			// Inverted Num Pad 数字小键盘
+			// Inverted Num Pad (digital keypad)
 			case 0x40000059: return Mobile.KEY_NUM7; // SDLK_KP_1
 			case 0x4000005A: return Mobile.KEY_NUM8; // SDLK_KP_2
 			case 0x4000005B: return Mobile.KEY_NUM9; // SDLK_KP_3
@@ -691,7 +691,7 @@ public class Anbu
 			case 0x40000062: return Mobile.KEY_NUM0; // SDLK_KP_0
 			
 			case 0x63://c
-				//切换按键模式
+				// Switch key mode
 				
 				useFlag=(useFlag+1)%5;
 				if(useFlag==0)

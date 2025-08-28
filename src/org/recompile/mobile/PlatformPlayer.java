@@ -165,7 +165,7 @@ public class PlatformPlayer implements Player
 		}
 		catch(Exception e)
 		{
-			System.out.println("字节数组转md5出错:"+e.getMessage());
+			System.out.println("Byte array to MD5 conversion error: "+e.getMessage());
 		}
         return sb.toString();
 
@@ -388,7 +388,7 @@ public class PlatformPlayer implements Player
 				
 				byte[] frame = new byte[100];
 				frame[0]='$';//36
-				frame[1]='C';//初始化
+				frame[1]='C';// Initialize
 					
 				frame[2]=(byte)(loops);
 				frame[3]=(byte)(loops >> 8);

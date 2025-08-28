@@ -343,7 +343,7 @@ public class Render {
 			return;
 		}
 		if (postCopy2D) {
-			 // 实际上不会改变画布上的任何内容，因为它试图用一个完全透明的颜色来填充画布，把画布置0
+			 // Actually won't change anything on the canvas, as it tries to fill the canvas with a completely transparent color, setting the canvas to 0
 			// targetImage.setHasAlpha(true);
 			// Canvas canvas = new Canvas(targetImage);
 			// canvas.clipRect(gClip);
@@ -584,7 +584,7 @@ public class Render {
 			glReadPixels(0, 0, 256, 256, GL_RGBA, GL_UNSIGNED_BYTE, targetTexture.image.getRaster());
 			targetTexture = null;
 		} else if (targetGraphics != null) {
-			if (postCopy2D) {//这里为true才能显示鬼泣文字,这里为false珍宝塔可以正常显示
+			if (postCopy2D) {// Set to true to display Devil May Cry text, set to false for Treasure Tower to display normally
 				copy2d(false);
 			}
 			Rect clip = this.gClip;
@@ -1540,7 +1540,7 @@ public class Render {
 			System.out.println("alpha "+a);
 		} */
 		
-		//return ( a<< 24) | ( (g)<< 16) | ((b)<< 8) | (b); //保留 
+		//return ( a<< 24) | ( (g)<< 16) | ((b)<< 8) | (b); // Reserved 
 		return ( a<< 24) | ( r<< 16) | (g<< 8) | (b);  
 		//return color;
 	}

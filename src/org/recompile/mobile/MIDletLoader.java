@@ -184,20 +184,20 @@ public class MIDletLoader extends URLClassLoader
 			
 			/* Path pathInZipfile = zipfs.getPath("/");      
 			
-			Path targetDirectoryPath = Paths.get("./unzip/"+jarname); // 替换为具体的目标目录路径
+			Path targetDirectoryPath = Paths.get("./unzip/"+jarname); // Replace with specific target directory path
 
 			copyDirectory(pathInZipfile, targetDirectoryPath); */
 		}
 		catch(Exception e)
 		{
-			System.out.println("创建zip文件系统出错: "+e.getMessage());
+			System.out.println("Error creating zip file system: "+e.getMessage());
 		}
 		
 		
 
 		try
 		{
-			System.setProperty("microedition.platform", "Nokia7650");//这个很重要
+			System.setProperty("microedition.platform", "Nokia7650");// This is very important
 			System.setProperty("microedition.profiles", "MIDP-2.0");
 			System.setProperty("microedition.configuration", "CLDC-1.0");
 			System.setProperty("microedition.locale", "zh-CN");
@@ -492,7 +492,7 @@ public class MIDletLoader extends URLClassLoader
 		}
 	}
 
-	//(java17可用)
+	// (Available for Java 17)
 	/* public URL getResource(String resource)
 	{
 		//System.out.println("Loading getResource:" + resource);
@@ -643,7 +643,7 @@ public class MIDletLoader extends URLClassLoader
 		}
 		catch (Exception e)
 		{
-			System.out.println("自定义加载类出错 "+name);
+			System.out.println("Custom class loading error "+name);
 			return null;
 		}
 		

@@ -283,7 +283,7 @@ static EGLSurface m3gCreateWindowSurface(M3Genum format,
     EGLConfig config = m3gQueryEGLConfig(format, bufferBits, EGL_WINDOW_BIT, NULL);
     
     EGLDisplay display = g_display;
-	if(display == EGL_NO_DISPLAY)								//失败返回 EGL_NO_DISPLAY
+	if(display == EGL_NO_DISPLAY)								//Returns EGL_NO_DISPLAY on failure
 	{
 		printf("[native] eglGetDisplay Failed\n");
 	}
@@ -344,7 +344,7 @@ static EGLSurface m3gCreateBitmapSurface(M3Genum format,
     EGLConfig config = m3gQueryEGLConfig(format, bufferBits, EGL_PIXMAP_BIT, bmp);
     
     EGLDisplay display = g_display;
-	if(display == EGL_NO_DISPLAY)								//失败返回 EGL_NO_DISPLAY
+	if(display == EGL_NO_DISPLAY)								//Returns EGL_NO_DISPLAY on failure
 	{
 		printf("[native] eglGetDisplay Failed\n");
 	}
@@ -421,7 +421,7 @@ static EGLSurface m3gCreatePBufferSurface(M3Genum format,
 	
     
     EGLDisplay display = g_display;
-	if(display == EGL_NO_DISPLAY)								//失败返回 EGL_NO_DISPLAY
+	if(display == EGL_NO_DISPLAY)								//Returns EGL_NO_DISPLAY on failure
 	{
 		printf("[native] eglGetDisplay Failed\n");
 	}
@@ -444,7 +444,7 @@ static EGLSurface m3gCreatePBufferSurface(M3Genum format,
     printf("  render type: 0x%x\n", rendert);   
 	
 	/* pthread_t thread_id = pthread_self();
-    printf("当前线程ID: %lu\n", thread_id); */
+    printf("Current thread ID: %lu\n", thread_id); */
     
 
     surf = eglCreatePbufferSurface(g_display,
@@ -1307,7 +1307,7 @@ static EGLContext m3gSelectGLContext(RenderContext *ctx,
                             &configID);
             printf("[native] get context eglconfigID:%d\n",configID);
 			
-			//获取config
+			//Get config
 			EGLint i=0;
 			EGLint val=0;
 			EGLBoolean rc=0;
@@ -1318,8 +1318,8 @@ static EGLContext m3gSelectGLContext(RenderContext *ctx,
 			
 			const EGLint egl_ctx_attr[] = {  
 				//EGL_CONTEXT_CLIENT_TYPE_KHR, EGL_RENDERABLE_TYPE_OPENGL_ES2_BIT_KHR,  
-				EGL_CONTEXT_MAJOR_VERSION_KHR, 1, // 指定主要版本为 1  
-				EGL_CONTEXT_MINOR_VERSION_KHR, 0, // 指定次要版本为 0  
+				EGL_CONTEXT_MAJOR_VERSION_KHR, 1, // Specify major version as 1  
+				EGL_CONTEXT_MINOR_VERSION_KHR, 0, // Specify minor version as 0  
 				EGL_NONE  
 			};  
 
@@ -1387,7 +1387,7 @@ static EGLContext m3gSelectGLContext(RenderContext *ctx,
         */
 		
 		/* pthread_t thread_id = pthread_self();
-		printf("当前线程ID: %lu\n", thread_id); */
+		printf("Current thread ID: %lu\n", thread_id); */
 		
         if (!glrc) {
         	printf("[native] eglCreateContext error=============\n");

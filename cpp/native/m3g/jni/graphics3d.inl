@@ -59,7 +59,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
 		g_display = eglGetDisplay(EGL_DEFAULT_DISPLAY);	
 		#endif
 
-		if(g_display == EGL_NO_DISPLAY)								//失败返回 EGL_NO_DISPLAY
+		if(g_display == EGL_NO_DISPLAY)								//Returns EGL_NO_DISPLAY on failure
 		{
 			printf("[native]  Init g_Display Failed\n");
 		}
@@ -179,9 +179,9 @@ JNIEXPORT jboolean JNICALL Java_javax_microedition_m3g_Graphics3D__1bindGraphics
 		
 		//pixels_ptr = (void*)(aEnv->GetIntArrayElements(bitmap, NULL));
 		/* 
-		isCopy被这个函数设置，将该参数设置成指向 JNI_TRUE 的指针 : 将 int 数组数据拷贝到一个新的内存空间中 , 并将该内存空间首地址返回 ;
-		将该参数设置成指向 JNI_FALSE 的指针 : 直接使用 java 中的 int 数组地址 , 返回 java 中的 int 数组的首地址 ;
-		将该参数设置成 NULL ( 推荐 ) : 表示不关心如何实现 , 让系统自动选择指针生成方式 , 一般情况下都不关心该生成方式 ; */
+		isCopy is set by this function, setting this parameter to point to JNI_TRUE: copies int array data to new memory space and returns the address;
+		Setting this parameter to point to JNI_FALSE: directly uses the Java int array address, returns the Java int array's first address;
+		Setting this parameter to NULL (recommended): indicates no concern about implementation, lets system automatically choose pointer generation method, generally don't care about this generation method; */
 		
 		
 		//aEnv->GetIntArrayRegion(bitmap, 0, aWidth*aHeight, (jint *)pixels_ptr);
@@ -290,9 +290,9 @@ JNIEXPORT void JNICALL Java_javax_microedition_m3g_Graphics3D__1releaseGraphics
 	
 	//aEnv->ReleaseIntArrayElements(bitmap, (jint *)pixels_ptr, 0);
 	/* 
-	模式 0 : 刷新 Java 数组 , 释放 C/C++ 数组
-	模式 1 ( JNI_COMMIT ) : 刷新 Java 数组 , 不释放 C/C ++ 数组
-	模式 2 ( JNI_ABORT ) : 不刷新 Java 数组 , 释放 C/C++ 数组 */
+	Mode 0: Refresh Java array, release C/C++ array
+	Mode 1 (JNI_COMMIT): Refresh Java array, do not release C/C++ array
+	Mode 2 (JNI_ABORT): Do not refresh Java array, release C/C++ array */
 	
 	
 	//jint len = aEnv->GetArrayLength(bitmap);
