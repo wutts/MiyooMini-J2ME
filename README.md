@@ -10,6 +10,8 @@ For 3D game support:
 - To support M3G, compile `libm3g` (dependencies: EGL, GLES1).
 - For Mascot Capsule v3 support, compile `libmicro3d` (dependencies: EGL, GLES2).
 
+Comprehensive build guide: [BUILD GUIDE](https://github.com/wutts/MiyooMini-J2ME/blob/main/BUILD_GUIDE.md)
+
 ## Adding the Emulator to Onion OS
 1. Move the J2ME folder to the Emu folder on your SD Card.
 2. To add J2ME games:
